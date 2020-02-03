@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Library Manager|Login{% endblock %}
+
+{% block main-content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 ml-auto mt-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title"><h3>Login</h3></div>
+            <form method="POST">
+              {% csrf_token %}
+              {{ form|crispy }}
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

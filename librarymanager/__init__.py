@@ -1,1 +1,1 @@
-default_app_config = 'librarymanager.apps.librarymanagerConfig'
+default_app_config = 'librarymanager.apps.LibrarymanagerConfig'
