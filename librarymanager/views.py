@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from .models import Book, Book_sub
+from django.db.models import Q
 
 from .forms import SearchForm
 
@@ -25,7 +26,10 @@ def dashboard(request):
         }
       #If not found ISBN then search in the database with simillar books available from given input data
       except Book.DoesNotExist:
-        books = Book.objects.filter(title__contains=data) 
+        # Old query to search out Data based on title only
+        # books = Book.objects.filter(title__contains=data)
+        # New query to search out data based on Q object with or condition. 
+        books = Book.objects.filter(Q(title__contains=data)|Q(author__contains=data))
         print(books)
         content = {
           'books': books,
